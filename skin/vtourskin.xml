@@ -289,18 +289,17 @@
 		onloaded.addevent="skin_hotspotstyle_setup(); start_pulse();" />
 
 	<action name="start_pulse" scope="local">
-		set(scale, 0.3);
+		set(caller.scale, 0.45);
 		pulse_up();
 	</action>
 
 	<action name="pulse_up" scope="local">
-		tween(scale, 0.6, 0.7, easeInOutQuad, pulse_down());
+		tween(caller.scale, 0.55, 1.0, easeInOutQuad, pulse_down());
 	</action>
 
 	<action name="pulse_down" scope="local">
-		tween(scale, 0.3, 0.7, easeInOutQuad, pulse_up());
+		tween(caller.scale, 0.45, 1.0, easeInOutQuad, pulse_up());
 	</action>
-
 
 	<action name="skin_hotspotstyle_setup" scope="local">
 		if(isvalue(caller.linkedscene) AND skin_settings.tooltips_hotspots,
