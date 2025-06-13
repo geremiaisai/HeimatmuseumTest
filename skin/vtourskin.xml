@@ -283,9 +283,9 @@
 		use3dtransition="false"
 		onclick="skin_hotspotstyle_click();"
 		depth="1000"
-		scale="0.3"
-		onover.addevent="tween(scale, 0.35);"
-		onout.addevent="tween(scale, 0.3);"
+		scale="0.45"
+		onover.addevent="tween(scale, 0.55);"
+		onout.addevent="tween(scale, 0.45); start_pulse();"
 		onloaded.addevent="skin_hotspotstyle_setup(); start_pulse();" />
 
 	<action name="start_pulse" scope="local">
