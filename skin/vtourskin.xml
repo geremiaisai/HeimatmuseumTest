@@ -272,19 +272,35 @@
 	<style name="skin_thumbtext_style" type="text" align="bottom" width="100%" y="5" enabled="false" bg="false" bgborder="false" css="calc:skin_settings.design_text_css + ' text-align:center; font-size:10px;'" txtshadow="get:skin_settings.design_text_txtshadow" />
 
 	<!-- skin_hotspotstyle - style for the hotspots -->
-	<style name="skin_hotspotstyle" url="vtourskin_hotspot.png" edge="top" distorted="true"
-	       tooltip=""
-	       linkedscene=""
-	       linkedscene_lookat=""
-	       linkedscene_hoffset="0"
-	       use3dtransition="false"
-	       onclick="skin_hotspotstyle_click();"
-	       depth="1000"
-	       scale="0.5"
-	       onover.addevent="tween(scale,0.55);"
-	       onout.addevent="tween(scale,0.5);"
-	       onloaded.addevent="skin_hotspotstyle_setup();"
-	       />
+	<style name="skin_hotspotstyle"
+		url="hotspot_museum.png"
+		edge="top"
+		distorted="true"
+		tooltip=""
+		linkedscene=""
+		linkedscene_lookat=""
+		linkedscene_hoffset="0"
+		use3dtransition="false"
+		onclick="skin_hotspotstyle_click();"
+		depth="1000"
+		scale="0.3"
+		onover.addevent="tween(scale, 0.35);"
+		onout.addevent="tween(scale, 0.3);"
+		onloaded.addevent="skin_hotspotstyle_setup(); start_pulse();" />
+
+	<action name="start_pulse" scope="local">
+		set(scale, 0.3);
+		pulse_up();
+	</action>
+
+	<action name="pulse_up" scope="local">
+		tween(scale, 0.6, 0.7, easeInOutQuad, pulse_down());
+	</action>
+
+	<action name="pulse_down" scope="local">
+		tween(scale, 0.3, 0.7, easeInOutQuad, pulse_up());
+	</action>
+
 
 	<action name="skin_hotspotstyle_setup" scope="local">
 		if(isvalue(caller.linkedscene) AND skin_settings.tooltips_hotspots,
